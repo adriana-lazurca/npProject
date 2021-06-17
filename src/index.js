@@ -5,7 +5,7 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-import MainPage from './components/MainPage'
+import MainPage from '../src/components/main-page/MainPage'
 import './index.css';
 
 ReactDOM.render(

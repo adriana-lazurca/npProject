@@ -1,8 +1,9 @@
 import React from 'react'
+import './MainContent.css'
 
 function MainContent() {
     return (
-        <div>I'm MainContent</div>
+        <div className="container img-container img-fluid mx-auto"></div>
     )
 }
 

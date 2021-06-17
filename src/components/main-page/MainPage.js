@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import MainContent from './MainContent';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
+import MainContent from '../main-content/MainContent';
 
 function MainPage() {
     return (
