@@ -1,8 +1,11 @@
 import React from 'react'
 
 function Login() {
+
     return (
-        <div className="text-end p-3">LOGIN</div>
+        <>
+            <div className="text-end">LOGIN</div>
+        </>
     )
 }
 
