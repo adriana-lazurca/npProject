@@ -1,25 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MiniHotelFoto from '../../assets/images/hotel-room.jpg';
-//import { ROOMS } from '../../constants';
 
+function Room(props) {
 
-function Room() {
-    //     const rooms = ROOMS.map((room) => ({
-    //         price: room.price,
-
-    //       }))
-    //console.log(rooms)
+    const { room } = props;
 
     return (
-        <>
-            <div className="card p-3" style={{ width: '18rem' }}>
-                <img src={MiniHotelFoto} className="card-img-top" alt="" />
-                <div className="card-body">
-                    <p className="card-text">Room1</p>
-                </div>
+        <div className="col-3 card p-3 my-3 mx-auto">
+            <img src={MiniHotelFoto} className="card-img-top" alt="" />
+            <div className="card-body">
+                <li>{room.name}</li>
+                <li>{room.category}</li>
+                <li>{room.price}</li>
             </div>
-        </>
+        </div>
     )
 }
+
+Room.propTypes = {
+    room: PropTypes.shape({
+        name: PropTypes.string,
+        category: PropTypes.string,
+        price: PropTypes.number
+    }).isRequired
+};
 
 export default Room;

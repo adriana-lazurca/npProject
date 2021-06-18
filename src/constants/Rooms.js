@@ -7,16 +7,16 @@ export const ROOMS = [
     {
         name: 'Second Room',
         category: 'family',
-        price: 100, 
+        price: 150, 
     },
     {
         name: 'Luxury Room',
         category: 'family',
-        price: 100, 
+        price: 300, 
     },
     {
         name: 'Small Room',
         category: 'family',
-        price: 100, 
+        price: 600, 
     }
 ]
