@@ -11,8 +11,8 @@ function Room(props) {
             <img src={MiniHotelFoto} className="card-img-top" alt="" />
             <div className="card-body">
                 <li>{room.name}</li>
-                <li>{room.category}</li>
-                <li>{room.price}</li>
+                <li style={{ display: !room.category && 'none' }}>Category: {room.category}</li>
+                <li>Price: {room.price ? room.price : 'ask for a price'} $</li>
             </div>
         </div>
     )

@@ -6,7 +6,7 @@ function Rooms({ rooms }) {
 
     return (
         <div className="row">
-            {rooms.map((room) => <Room key={room.name} room={room} />)}
+            {rooms.map((room) => <Room key={room.name} room={room}/>)}
         </div>
     )
 }
