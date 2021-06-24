@@ -12,7 +12,10 @@ function Room(props) {
             <div className="card-body">
                 <li>{room.name}</li>
                 <li style={{ display: !room.category && 'none' }}>Category: {room.category}</li>
-                <li>Price: {room.price ? room.price : 'ask for a price'} $</li>
+                <li>Price: 
+                    {room.price ? room.price.toLocaleString("en-US", { style: "currency", currency: "USD" })
+                        : 'ask for a price'}
+                </li>
             </div>
         </div>
     )
