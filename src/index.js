@@ -5,10 +5,10 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-import MainPage from '../src/components/main-page/MainPage'
 import './index.css';
+import App from './App.js';
 
 ReactDOM.render(
-    <MainPage />,
+    <App />,
     document.getElementById('root')
 );

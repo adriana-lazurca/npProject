@@ -6,7 +6,6 @@ import MainContent from '../main-content/MainContent';
 function MainPage() {
     return (
         <>
-            <Header />
             <MainContent />
             <Footer />
         </>
