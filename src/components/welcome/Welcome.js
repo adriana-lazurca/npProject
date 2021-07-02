@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Welcome({phrase}){
     return(
         <div>
-            <p>{phrase}</p>
+            <p><Link to="/rooms">{phrase}</Link></p>
         </div>
     )
 }

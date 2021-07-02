@@ -9,7 +9,7 @@ class MainContent extends React.Component {
 constructor(){
     super();
     this.state = {
-        phrase: 'welcome'
+        phrase: 'Take a look at our rooms...'
     }
 }
 

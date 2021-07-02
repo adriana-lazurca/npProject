@@ -8,10 +8,11 @@ import About from '../src/components/about/About';
 import Rooms from '../src/components/rooms/Rooms';
 import Reviews from '../src/components/reviews/Reviews';
 import Header from './components/header/Header';
+import { ROOMS } from '../src/constants/Rooms';
 
-
+const rooms = ROOMS;
 const App = () => (
-  <Router>
+    <Router>
     <Header />
     <Switch>
       <Route exact path="/">
@@ -21,7 +22,7 @@ const App = () => (
         <About />
       </Route>
       <Route path="/rooms">
-        <Rooms />
+        <Rooms rooms={rooms}/>
       </Route>
       <Route path="/reviews">
         <Reviews />
