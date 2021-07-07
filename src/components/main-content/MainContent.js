@@ -6,12 +6,12 @@ import Rooms from '../rooms/Rooms.js';
 import Welcome from '../welcome/Welcome.js';
 
 class MainContent extends React.Component {
-constructor(){
-    super();
-    this.state = {
-        phrase: 'Take a look at our rooms...'
+    constructor() {
+        super();
+        this.state = {
+            phrase: 'Take a look at our rooms...'
+        }
     }
-}
 
     render() {
         const rooms = ROOMS;

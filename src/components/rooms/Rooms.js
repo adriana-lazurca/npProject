@@ -1,27 +1,84 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Room from '../room/Room';
-
-// function Rooms({ rooms }) {
-
-//     return (
-//         <div className="row">
-//             {rooms.map((room) => <Room key={room.id} room={room}/>)}
-//         </div>
-//     )
-// }
+import Select from 'react-select';
 
 class Rooms extends React.Component {
-    constructor() {
-        super()
-        // this.state = {
-        //     rooms: this.rooms
-        // }
+    name;
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedOption: null
+        }
     }
+
     render() {
+        // const selectedOption = this.state;
+
+        // const searchRoom = selectedOption => rooms.filter(room => {
+        //     return room.category.toLowerCase().includes(selectedOption.toLowerCase())
+        // })
+
+        const { rooms } = this.props;
+
+        const categories = rooms
+            .map(room => room.category)
+            .filter(category => category !== undefined)
+
+        console.log(categories)
+        
+        const options = categories.map((option) => {
+            return {
+                label: option,
+                value: option
+            }
+        });
+        console.log(options);
+
+        // controlSubTitles = a.map((subtitle) => {
+        //     return {
+        //       value: subtitle,
+        //       label: subtitle
+        //     }
+        //   })
+
+        // const options = [
+        //     {
+        //         value: categories,
+        //         label: categories
+        //     }
+        // ]
+
+        const Placeholder = () => (
+            <p>Select a category...</p>
+        );
+
+
+        const searchRoomCat = selectedOption => {
+            //searchRoom();
+            //console.log(searchRoom)
+
+        }
+
+        this.handleChange = (selectedOption) => {
+            this.setState({ selectedOption });
+            //searchRoomCat(selectedOption);
+        }
+
+        console.log(this.state.selectedOption);
         return (
             <div className="row">
-                {this.props.rooms.map((room) => <Room key={room.id} room={room} />)}
+                <div className="container">
+                    <Select
+                        className="col-4"
+                        options={options}
+                        onChange={this.handleChange}
+                        isSearchable={true}
+                        components={{ Placeholder }}
+                    />
+                </div>
+                {rooms.map((room) => <Room key={room.id} room={room} />)}
             </div>
         )
     }

@@ -6,15 +6,18 @@ import { Link } from 'react-router-dom';
 function Room(props) {
 
     const { room } = props;
-    //const [scale, setScale] = useState(0);
+
     const handleMouseOver = (event) => {
         event.target.style.transform = 'scale(1.2)'
-        //setScale(console.log(scale))
     }
 
     const handleMouseOut = (event) => {
         event.target.style.transform = 'scale(1)'
-        event.target.style.transitionDuration= '0.5s'
+        event.target.style.transitionDuration = '0.5s'
+    }
+
+    const withCurrency = (amount, currency) => {
+        return amount.toLocaleString(currency, { style: "currency", currency: "USD" });
     }
 
     return (
@@ -26,7 +29,8 @@ function Room(props) {
                 <li>{room.name}</li>
                 <li style={{ display: !room.category && 'none' }}>Category: {room.category}</li>
                 <li>Price:
-                    {room.price ? room.price.toLocaleString("en-US", { style: "currency", currency: "USD" })
+                    {room.price ?
+                        withCurrency(room.price, "en-US")
                         : 'ask for a price'}
                 </li>
                 <li><Link to="/rooms">Learn more</Link></li>

@@ -8,19 +8,19 @@ export const ROOMS = [
     {
         id:2,
         name: 'Second Room',
-        category: 'family',
+        category: 'Family',
         price: 150, 
     },
     {
         id:3,
         name: 'Luxury Room',
-        category: 'family',
+        category: 'Couple',
         price: 300, 
     },
     {
         id:4,
         name: 'Small Room',
-        category: 'family',
+        category: 'Single',
         price: 600, 
     }
 ]
