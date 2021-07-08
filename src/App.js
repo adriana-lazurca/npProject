@@ -12,7 +12,7 @@ import { ROOMS } from '../src/constants/Rooms';
 
 const rooms = ROOMS;
 const App = () => (
-    <Router>
+  <Router>
     <Header />
     <Switch>
       <Route exact path="/">

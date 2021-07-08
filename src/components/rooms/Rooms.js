@@ -9,16 +9,16 @@ class Rooms extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: null
+            selectedOption: '',
+            isCategorySelected: false
         }
+        this.initialOption=this.state
     }
 
     render() {
-        // const selectedOption = this.state;
-
-        // const searchRoom = selectedOption => rooms.filter(room => {
-        //     return room.category.toLowerCase().includes(selectedOption.toLowerCase())
-        // })
+        const Placeholder = () => (
+            <p>Select a category...</p>
+        );
 
         const { rooms } = this.props;
 
@@ -26,47 +26,34 @@ class Rooms extends React.Component {
             .map(room => room.category)
             .filter(category => category !== undefined)
 
-        console.log(categories)
-        
+        //console.log(`categories${categories}`)
+
         const options = categories.map((option) => {
             return {
                 label: option,
                 value: option
             }
         });
-        console.log(options);
-
-        // controlSubTitles = a.map((subtitle) => {
-        //     return {
-        //       value: subtitle,
-        //       label: subtitle
-        //     }
-        //   })
-
-        // const options = [
-        //     {
-        //         value: categories,
-        //         label: categories
-        //     }
-        // ]
-
-        const Placeholder = () => (
-            <p>Select a category...</p>
-        );
-
-
-        const searchRoomCat = selectedOption => {
-            //searchRoom();
-            //console.log(searchRoom)
-
-        }
+        //console.log(`options ${options}`);
 
         this.handleChange = (selectedOption) => {
-            this.setState({ selectedOption });
+            this.setState({ selectedOption: selectedOption.label, isCategorySelected: true});
             //searchRoomCat(selectedOption);
         }
 
-        console.log(this.state.selectedOption);
+        const sameCategory = rooms
+            .map(room => room)
+            .filter(room => room.category === this.state.selectedOption)
+
+        //console.log(`room.category ${room.category}`);
+
+        //const { isCategorySelected } = this.props;
+        this.handleClick = () => this.setState( this.initialOption)
+
+        console.log(`this.state.selectedOption ${this.state.selectedOption}`);
+
+        //console.log(isCategorySelected);
+
         return (
             <div className="row">
                 <div className="container">
@@ -76,9 +63,14 @@ class Rooms extends React.Component {
                         onChange={this.handleChange}
                         isSearchable={true}
                         components={{ Placeholder }}
+
                     />
+                    <button onClick={this.handleClick}>X</button>
                 </div>
-                {rooms.map((room) => <Room key={room.id} room={room} />)}
+                {/* {isCategorySelected ? rooms.map((room) => <Room key={room.id} room={room} />)
+                    : sameCategory.map((room) => <Room key={room.id} room={room} />)} */}
+                {this.state.isCategorySelected ? sameCategory.map((room) => <Room key={room.id} room={room} />)
+                    : rooms.map((room) => <Room key={room.id} room={room} />)}
             </div>
         )
     }
