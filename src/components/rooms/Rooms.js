@@ -12,7 +12,7 @@ class Rooms extends React.Component {
             selectedOption: '',
             isCategorySelected: false
         }
-        this.initialOption=this.state
+        this.initialOption = this.state
     }
 
     render() {
@@ -22,11 +22,12 @@ class Rooms extends React.Component {
 
         const { rooms } = this.props;
 
-        const categories = rooms
+        const categories = [...new Set(rooms
             .map(room => room.category)
             .filter(category => category !== undefined)
+        )];
 
-        //console.log(`categories${categories}`)
+        console.log(`categories ${categories}`)
 
         const options = categories.map((option) => {
             return {
@@ -37,8 +38,7 @@ class Rooms extends React.Component {
         //console.log(`options ${options}`);
 
         this.handleChange = (selectedOption) => {
-            this.setState({ selectedOption: selectedOption.label, isCategorySelected: true});
-            //searchRoomCat(selectedOption);
+            this.setState({ selectedOption: selectedOption.label, isCategorySelected: true });
         }
 
         const sameCategory = rooms
@@ -47,12 +47,9 @@ class Rooms extends React.Component {
 
         //console.log(`room.category ${room.category}`);
 
-        //const { isCategorySelected } = this.props;
-        this.handleClick = () => this.setState( this.initialOption)
+        this.handleClick = () => this.setState(this.initialOption)
 
-        console.log(`this.state.selectedOption ${this.state.selectedOption}`);
-
-        //console.log(isCategorySelected);
+        //console.log(`this.state.selectedOption ${this.state.selectedOption}`);
 
         return (
             <div className="row">
