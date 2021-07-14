@@ -9,17 +9,17 @@ class MainContent extends React.Component {
     constructor() {
         super();
         this.state = {
-            phrase: 'Take a look at our rooms...'
+            phrase: 'Take a look at our rooms...',
         }
     }
-
+    
     render() {
         const rooms = ROOMS;
         return (
             <>
                 <div className="container img-container img-fluid mx-auto text-center"></div>
                 <Welcome phrase={this.state.phrase} />
-                <Rooms rooms={rooms} />
+                {/* <Rooms rooms={rooms} /> */}
             </>
         )
     }
