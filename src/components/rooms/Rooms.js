@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Room from '../room/Room';
 import Select from 'react-select';
+
+import Room from '../room/Room';
+// import Loading from '../loading/Loading';
 
 class Rooms extends React.Component {
     name;
@@ -9,11 +11,18 @@ class Rooms extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            //isLoading: true,
             selectedOption: '',
             isCategorySelected: false
         }
         this.initialOption = this.state
     }
+
+    // componentDidMount() {
+    //     setTimeout(() => {
+    //         this.setState({ isLoading: false })
+    //     }, 10000)
+    // }
 
     render() {
         const Placeholder = () => (
@@ -37,38 +46,47 @@ class Rooms extends React.Component {
         });
         //console.log(`options ${options}`);
 
-        this.handleChange = (selectedOption) => {
-            this.setState({ selectedOption: selectedOption.label, isCategorySelected: true });
-        }
-
-        const sameCategory = rooms
+        const selectedRooms = rooms
             .map(room => room)
             .filter(room => room.category === this.state.selectedOption)
 
-        //console.log(`room.category ${room.category}`);
+        console.log(`sameCategory ${selectedRooms}`);
+
+        this.handleChange = (selectedOption) => {
+            this.setState({ selectedOption: selectedOption.label, isCategorySelected: true });
+        }
 
         this.handleClick = () => this.setState(this.initialOption)
 
         //console.log(`this.state.selectedOption ${this.state.selectedOption}`);
 
         return (
-            <div className="row">
-                <div className="container">
-                    <Select
-                        className="col-4"
-                        options={options}
-                        onChange={this.handleChange}
-                        isSearchable={true}
-                        components={{ Placeholder }}
+            <>
+                {/* {this.props.isLoading */}
+                    {/* ? */}
+                    {/* (<div>
+                        <Loading />
+                    </div>)
+                    : ( */}
+                        <div className="row">
+                            <div className="container">
+                                <Select
+                                    className="col-4"
+                                    options={options}
+                                    onChange={this.handleChange}
+                                    isSearchable={true}
+                                    components={{ Placeholder }}
 
-                    />
-                    <button onClick={this.handleClick}>X</button>
-                </div>
-                {/* {isCategorySelected ? rooms.map((room) => <Room key={room.id} room={room} />)
+                                />
+                                <button onClick={this.handleClick}>X</button>
+                            </div>
+                            {/* {isCategorySelected ? rooms.map((room) => <Room key={room.id} room={room} />)
                     : sameCategory.map((room) => <Room key={room.id} room={room} />)} */}
-                {this.state.isCategorySelected ? sameCategory.map((room) => <Room key={room.id} room={room} />)
-                    : rooms.map((room) => <Room key={room.id} room={room} />)}
-            </div>
+                            {this.state.isCategorySelected ? selectedRooms.map((room) => <Room key={room.id} room={room} />)
+                                : rooms.map((room) => <Room key={room.id} room={room} />)}
+                        </div>
+                    {/* )} */}
+            </>
         )
     }
 }
