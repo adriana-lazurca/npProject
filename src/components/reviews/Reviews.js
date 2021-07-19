@@ -46,7 +46,7 @@ class Reviews extends React.Component {
                         <Attraction
                             key={attraction.id}
                             attraction={attraction}
-                            checked={this.checked}
+                            // checked={attraction.checked}
                             handleChange={this.handleChange}
                         />
                     )}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 
 import Room from '../room/Room';
-// import Loading from '../loading/Loading';
 
 class Rooms extends React.Component {
     name;
@@ -11,18 +10,11 @@ class Rooms extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //isLoading: true,
             selectedOption: '',
             isCategorySelected: false
         }
         this.initialOption = this.state
     }
-
-    // componentDidMount() {
-    //     setTimeout(() => {
-    //         this.setState({ isLoading: false })
-    //     }, 10000)
-    // }
 
     render() {
         const Placeholder = () => (
@@ -62,30 +54,23 @@ class Rooms extends React.Component {
 
         return (
             <>
-                {/* {this.props.isLoading */}
-                    {/* ? */}
-                    {/* (<div>
-                        <Loading />
-                    </div>)
-                    : ( */}
-                        <div className="row">
-                            <div className="container">
-                                <Select
-                                    className="col-4"
-                                    options={options}
-                                    onChange={this.handleChange}
-                                    isSearchable={true}
-                                    components={{ Placeholder }}
+                <div className="row">
+                    <div className="container">
+                        <Select
+                            className="col-4"
+                            options={options}
+                            onChange={this.handleChange}
+                            isSearchable={true}
+                            components={{ Placeholder }}
 
-                                />
-                                <button onClick={this.handleClick}>X</button>
-                            </div>
-                            {/* {isCategorySelected ? rooms.map((room) => <Room key={room.id} room={room} />)
+                        />
+                        <button onClick={this.handleClick}>X</button>
+                    </div>
+                    {/* {isCategorySelected ? rooms.map((room) => <Room key={room.id} room={room} />)
                     : sameCategory.map((room) => <Room key={room.id} room={room} />)} */}
-                            {this.state.isCategorySelected ? selectedRooms.map((room) => <Room key={room.id} room={room} />)
-                                : rooms.map((room) => <Room key={room.id} room={room} />)}
-                        </div>
-                    {/* )} */}
+                    {this.state.isCategorySelected ? selectedRooms.map((room) => <Room key={room.id} room={room} />)
+                        : rooms.map((room) => <Room key={room.id} room={room} />)}
+                </div>
             </>
         )
     }

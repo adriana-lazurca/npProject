@@ -10,18 +10,19 @@ class Attraction extends React.Component {
 
     render() {
         const { attraction, handleChange, checked } = this.props;
+        console.log(attraction)
 
         return (
             <ul>
-                <li>
-                    <input className="m-3"
+                <li className={attraction.checked? 'text-decoration-line-through fst-italic':''}                 >
+                    <input className="m-3 "
                         type="checkbox"
-                        checked={checked}
+                        checked={attraction.checked}
                         onChange={() => handleChange(attraction.id)}>
                     </input>
                     {attraction.description}
-                </li>
-            </ul>
+                </li >
+            </ul >
         )
     }
 }
