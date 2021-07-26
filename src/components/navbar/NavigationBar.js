@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const NavigationBar = () => {
     return (
         <>
-            <nav className="role='navigation' navbar navbar-expand-sm navbar-light bg-red">
+            <nav className="role='navigation' navbar navbar-expand-sm navbar-light">
                 {/* <a
                     role="button"
                     className={`navbar-burger burger ${isOpen && "is-active"}`}
@@ -32,6 +32,10 @@ const NavigationBar = () => {
                         <li className="nav-item p-3">
 
                             <Link className="nav-link" ClassName="active" to="/rooms">Rooms</Link>
+                        </li>
+                        <li className="nav-item p-3">
+
+                            <Link className="nav-link" ClassName="active" to="/attractions">Attractions</Link>
                         </li>
                         <li className="nav-item p-3">
 

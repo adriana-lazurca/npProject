@@ -10,9 +10,11 @@ import Reviews from '../src/components/reviews/Reviews';
 import Header from './components/header/Header';
 import Loading from '../src/components/loading/Loading';
 import { ROOMS } from '../src/constants/Rooms';
+import Attractions from './components/attractions/Attractions';
 
 const rooms = ROOMS;
 class App extends React.Component {
+
   constructor() {
     super();
     this.state = {
@@ -43,6 +45,9 @@ class App extends React.Component {
               :
               <Rooms rooms={rooms} />
             }
+          </Route>
+          <Route path="/attractions">
+            <Attractions />
           </Route>
           <Route path="/reviews">
             <Reviews />
