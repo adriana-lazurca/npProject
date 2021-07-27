@@ -5,7 +5,7 @@ import Select from 'react-select';
 import Room from '../room/Room';
 
 class Rooms extends React.Component {
-    name;
+    // name;
 
     constructor(props) {
         super(props);
@@ -28,8 +28,6 @@ class Rooms extends React.Component {
             .filter(category => category !== undefined)
         )];
 
-        console.log(`categories ${categories}`)
-
         const options = categories.map((option) => {
             return {
                 label: option,
@@ -50,7 +48,6 @@ class Rooms extends React.Component {
 
         this.handleClick = () => this.setState(this.initialOption)
 
-        //console.log(`this.state.selectedOption ${this.state.selectedOption}`);
 
         return (
             <>

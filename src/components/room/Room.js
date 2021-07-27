@@ -8,12 +8,14 @@ function Room(props) {
     const { room } = props;
 
     const handleMouseOver = (event) => {
-        event.target.style.transform = 'scale(1.2)'
+        const {style} = event.target;
+        style.transform = 'scale(1.2)'
     }
 
     const handleMouseOut = (event) => {
-        event.target.style.transform = 'scale(1)'
-        event.target.style.transitionDuration = '0.5s'
+        const {style} = event.target;
+        style.transform = 'scale(1)'
+        style.transitionDuration = '0.5s'
     }
 
     const withCurrency = (amount, currency) => {
