@@ -8,12 +8,12 @@ function Room(props) {
     const { room } = props;
 
     const handleMouseOver = (event) => {
-        const {style} = event.target;
+        const { style } = event.target;
         style.transform = 'scale(1.2)'
     }
 
     const handleMouseOut = (event) => {
-        const {style} = event.target;
+        const { style } = event.target;
         style.transform = 'scale(1)'
         style.transitionDuration = '0.5s'
     }
@@ -35,7 +35,16 @@ function Room(props) {
                         withCurrency(room.price, "en-US")
                         : 'ask for a price'}
                 </li>
-                <li><Link to="/rooms">Learn more</Link></li>
+                {/* <li> */}
+                    <Link
+                        to={{
+                            pathname: `/rooms/${room.id}`,
+                            state: { room: room }
+                        }}
+                    >
+                        <button>Learn more</button>
+                    </Link>
+                {/* </li> */}
             </div>
         </div>
     )

@@ -14,6 +14,7 @@ class Attractions extends React.Component {
     handleClick = () => {
         this.setState(prevState => {
             return {
+                // ...prevState,
                 subscribersNr: prevState.subscribersNr + 1
             }
         })

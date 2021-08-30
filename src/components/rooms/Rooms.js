@@ -34,20 +34,15 @@ class Rooms extends React.Component {
                 value: option
             }
         });
-        //console.log(`options ${options}`);
 
-        const selectedRooms = rooms
-            .map(room => room)
-            .filter(room => room.category === this.state.selectedOption)
-
-        console.log(`sameCategory ${selectedRooms}`);
+        const selectedRoom = rooms
+            .find(room => room.category === this.state.selectedOption)
 
         this.handleChange = (selectedOption) => {
             this.setState({ selectedOption: selectedOption.label, isCategorySelected: true });
         }
 
         this.handleClick = () => this.setState(this.initialOption)
-
 
         return (
             <>
@@ -63,9 +58,9 @@ class Rooms extends React.Component {
                         />
                         <button onClick={this.handleClick}>X</button>
                     </div>
-                    {/* {isCategorySelected ? rooms.map((room) => <Room key={room.id} room={room} />)
-                    : sameCategory.map((room) => <Room key={room.id} room={room} />)} */}
-                    {this.state.isCategorySelected ? selectedRooms.map((room) => <Room key={room.id} room={room} />)
+                    
+                    {this.state.isCategorySelected
+                        ? <Room room={selectedRoom} />
                         : rooms.map((room) => <Room key={room.id} room={room} />)}
                 </div>
             </>

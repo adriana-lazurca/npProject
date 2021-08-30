@@ -11,6 +11,7 @@ import Header from './components/header/Header';
 import Loading from '../src/components/loading/Loading';
 import { ROOMS } from '../src/constants/Rooms';
 import Attractions from './components/attractions/Attractions';
+import RoomDetails from './components/room-details/RoomDetails';
 
 const rooms = ROOMS;
 class App extends React.Component {
@@ -25,7 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ isLoading: false })
-    }, 5000)
+    }, 1500)
   }
 
   render() {
@@ -39,17 +40,20 @@ class App extends React.Component {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/rooms">
+          <Route exact path="/rooms">
             {this.state.isLoading ?
               <Loading />
               :
               <Rooms rooms={rooms} />
             }
           </Route>
-          <Route path="/attractions">
+          <Route exact path="/rooms/:id">
+            <RoomDetails />
+          </Route>
+          <Route exact path="/attractions">
             <Attractions />
           </Route>
-          <Route path="/reviews">
+          <Route exact path="/reviews">
             <Reviews />
           </Route>
         </Switch>
