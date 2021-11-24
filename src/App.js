@@ -12,6 +12,7 @@ import Loading from '../src/components/loading/Loading';
 import { ROOMS } from '../src/constants/Rooms';
 import Attractions from './components/attractions/Attractions';
 import RoomDetails from './components/room-details/RoomDetails';
+import Game from './components/Game';
 
 const rooms = ROOMS;
 class App extends React.Component {
@@ -33,9 +34,10 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
+
         <Switch>
-          <Route exact path="/">
-            <MainPage />
+          <Route exact path="/" >
+        <MainPage />
           </Route>
           <Route path="/about">
             <About />
@@ -56,9 +58,13 @@ class App extends React.Component {
           <Route exact path="/reviews">
             <Reviews />
           </Route>
+          <Route exact path="/Game">
+            <Game />
+          </Route>
         </Switch>
       </Router>
     )
+
   }
 }
 

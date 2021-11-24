@@ -41,6 +41,10 @@ const NavigationBar = () => {
 
                             <Link className="nav-link" ClassName="active" to="/reviews">Reviews</Link>
                         </li>
+                        <li className="nav-item p-3">
+
+                            <Link className="nav-link" ClassName="active" to="/Game">Game</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>

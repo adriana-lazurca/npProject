@@ -9,17 +9,6 @@ class Rooms extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            selectedOption: '',
-            isCategorySelected: false
-        }
-        this.initialOption = this.state
-    }
-
-    render() {
-        const Placeholder = () => (
-            <p>Select a category...</p>
-        );
 
         const { rooms } = this.props;
 
@@ -35,14 +24,38 @@ class Rooms extends React.Component {
             }
         });
 
-        const selectedRoom = rooms
-            .find(room => room.category === this.state.selectedOption)
+        this.state = {
+            options,
+            selectedOption: null,
+            isCategorySelected: false
+        }
+        //this.initialOption = this.state
+    }
 
-        this.handleChange = (selectedOption) => {
-            this.setState({ selectedOption: selectedOption.label, isCategorySelected: true });
+    render() {
+        const Placeholder = () => (
+            <p>Select a category...</p>
+        );
+
+        const { rooms } = this.props;
+
+        this.changeOption = (selectedOption) => {
+            this.setState(prevState => ({
+                ...prevState,
+                selectedOption
+            }));
         }
 
-        this.handleClick = () => this.setState(this.initialOption)
+        this.clearFilter = () => this.setState(prevState => ({
+            ...prevState,
+            selectedOption: null
+        }))
+
+        const { selectedOption, options } = this.state;
+
+        const isOptionSelected = selectedOption != undefined;
+
+        const selectedRooms = rooms.filter(room => !isOptionSelected || room.category === selectedOption.value);
 
         return (
             <>
@@ -50,18 +63,18 @@ class Rooms extends React.Component {
                     <div className="container">
                         <Select
                             className="col-4"
+                            value={selectedOption}
                             options={options}
-                            onChange={this.handleChange}
+                            onChange={this.changeOption}
                             isSearchable={true}
                             components={{ Placeholder }}
-
                         />
-                        <button onClick={this.handleClick}>X</button>
+                        <button onClick={this.clearFilter}>X</button>
                     </div>
-                    
-                    {this.state.isCategorySelected
-                        ? <Room room={selectedRoom} />
-                        : rooms.map((room) => <Room key={room.id} room={room} />)}
+
+                    {isOptionSelected && <p> {selectedRooms.length} rooms found</p>}
+
+                    {selectedRooms.map((room) => <Room key={room.id} room={room} />)}
                 </div>
             </>
         )
